@@ -1,5 +1,5 @@
 import {
-  Button,
+  Box,
   Checkbox,
   FormControl,
   FormControlLabel,
@@ -8,27 +8,59 @@ import {
 import { FaTrashAlt } from 'react-icons/fa';
 import React from 'react';
 import styled from '@emotion/styled';
+import { useGlobalContext } from '../context';
 
-const List = () => {
+const List = ({ list = [] }) => {
+  const { handleCheckboxChange, deleteItem } = useGlobalContext();
+
   return (
-    <FormGroup>
+    <FormGroup sx={{ mb: 4 }}>
       <LabelControl>
-        <FormControlLabel control={<Checkbox />} label="hello" />
-        <FaTrashAlt />
+        {list.map((item) => {
+          const { id, name, isCompleted } = item;
+
+          return (
+            <Box className="checkbox" key={id}>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    id={id}
+                    checked={isCompleted}
+                    onChange={handleCheckboxChange}
+                  />
+                }
+                label={name}
+                className={isCompleted ? 'completed' : ''}
+              />
+              <span className="list-icon" onClick={() => deleteItem(id)}>
+                <FaTrashAlt />
+              </span>
+            </Box>
+          );
+        })}
       </LabelControl>
-      <FormControlLabel control={<Checkbox defaultChecked />} label="hello" />
-      <Button variant="contained" color="error" size="large">
-        delete all
-      </Button>
     </FormGroup>
   );
 };
 
 const LabelControl = styled(FormControl)`
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  justify-content: end;
+  margin-top: 1rem;
+
+  .checkbox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .completed {
+    text-decoration-line: line-through;
+    text-decoration-color: rgba(0, 0, 0, 0.6);
+  }
+  .list-icon {
+    cursor: pointer;
+  }
 `;
 
 export default List;

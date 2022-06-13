@@ -1,18 +1,18 @@
 import React from 'react';
 import Input from './Input';
 import List from './List';
-import styledComponents from 'styled-components';
+import { Box } from '@mui/material';
+import { useGlobalContext } from '../context';
 
 const Todo = () => {
+  const { todoList } = useGlobalContext();
+
   return (
-    <Container>
+    <Box>
       <Input />
-      <List />
-    </Container>
+      <List list={todoList} />
+    </Box>
   );
 };
-
-const Container = styledComponents.div`
-`;
 
 export default Todo;
