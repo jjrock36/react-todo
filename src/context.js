@@ -1,16 +1,18 @@
 import React, { useState, useContext } from 'react';
 import { v1 as uuidv1 } from 'uuid';
+import useLocalStorage from './hooks/useLocalStorage';
 
 const GlobalContext = React.createContext();
-
 export const GlobalProvider = ({ children }) => {
+  // state
   const [item, setItem] = useState({
     id: uuidv1(),
     name: '',
     isCompleted: false,
   });
-  const [todoList, setTodoList] = useState([]);
+  const [todoList, setTodoList] = useLocalStorage('list', []);
 
+  // functions
   const handleInputChange = (e) => {
     const value = e.target.value;
     setItem((prevState) => ({

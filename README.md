@@ -73,8 +73,8 @@ $ npm start
 
 <!-- This section should list any articles or add-ons/plugins that helps you to complete the project. This is optional but it will help you in the future. For exmpale -->
 
-- [React CRUD App Tutorial](https://www.freecodecamp.org/news/react-crud-app-how-to-create-a-book-management-app-from-scratch/)
 - [MUI](https://mui.com/)
+- [React CRUD App Tutorial](https://www.freecodecamp.org/news/react-crud-app-how-to-create-a-book-management-app-from-scratch/)
 - [How to Work with Multiple Checkboxes](https://www.freecodecamp.org/news/how-to-work-with-multiple-checkboxes-in-react/)
 - [Material UI Tabs Component with React Router](https://www.youtube.com/watch?v=mhjbACbSeSU)
 
